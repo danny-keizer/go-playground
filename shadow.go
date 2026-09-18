@@ -80,7 +80,7 @@ func main() {
 
 	var databaseType string = "postgresql"
 
-	fmt.Print("Enter name and age: ")
+	fmt.Print("Select which database to modify (postgresql or mariadb): ")
 	fmt.Scan(&databaseType)
 
 	switch databaseType {
