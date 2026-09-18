@@ -93,7 +93,7 @@ func main() {
 		fmt.Println(dbDelete(*myTransaction))
 
 	case "mariadb":
-		myTransaction := NewDatabaseTransaction(&postgresqlAgent{})
+		myTransaction := NewDatabaseTransaction(&mariadbAgent{})
 		fmt.Println(dbCreate(*myTransaction))
 		fmt.Println(dbRead(*myTransaction))
 		fmt.Println(dbUpdate(*myTransaction))
