@@ -79,7 +79,9 @@ func dbDelete(transaction DatabaseTransaction) string {
 func main() {
 
 	var databaseType string = "postgresql"
-	_ = databaseType
+
+	fmt.Print("Enter name and age: ")
+	fmt.Scan(&databaseType)
 
 	switch databaseType {
 
