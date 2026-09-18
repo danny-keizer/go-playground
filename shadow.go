@@ -81,10 +81,23 @@ func main() {
 	var databaseType string = "postgresql"
 	_ = databaseType
 
-	myTransaction := NewDatabaseTransaction(&postgresqlAgent{})
-	fmt.Println(dbCreate(*myTransaction))
-	fmt.Println(dbRead(*myTransaction))
-	fmt.Println(dbUpdate(*myTransaction))
-	fmt.Println(dbDelete(*myTransaction))
+	switch databaseType {
 
+	case "postgresql":
+		myTransaction := NewDatabaseTransaction(&postgresqlAgent{})
+		fmt.Println(dbCreate(*myTransaction))
+		fmt.Println(dbRead(*myTransaction))
+		fmt.Println(dbUpdate(*myTransaction))
+		fmt.Println(dbDelete(*myTransaction))
+
+	case "mariadb":
+		myTransaction := NewDatabaseTransaction(&postgresqlAgent{})
+		fmt.Println(dbCreate(*myTransaction))
+		fmt.Println(dbRead(*myTransaction))
+		fmt.Println(dbUpdate(*myTransaction))
+		fmt.Println(dbDelete(*myTransaction))
+	default:
+		fmt.Println("Unsupported database type, the following are supported: postgresql, mariadb.")
+
+	}
 }
