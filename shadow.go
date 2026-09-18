@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 // This defines the database transaction struct.
 type DatabaseTransaction struct {
 	database databaseConnector
@@ -54,7 +56,7 @@ func (p *mariadbAgent) delete() string {
 // Boilerplate.
 
 func NewDatabaseTransaction(connector databaseConnector) *DatabaseTransaction {
-	return &DatabaseTransaction{}
+	return &DatabaseTransaction{connector}
 }
 
 func dbCreate(transaction DatabaseTransaction) string {
@@ -66,7 +68,7 @@ func dbRead(transaction DatabaseTransaction) string {
 }
 
 func dbUpdate(transaction DatabaseTransaction) string {
-	return transaction.database.delete()
+	return transaction.database.update()
 }
 
 func dbDelete(transaction DatabaseTransaction) string {
@@ -80,9 +82,9 @@ func main() {
 	_ = databaseType
 
 	myTransaction := NewDatabaseTransaction(&postgresqlAgent{})
-	dbCreate(*myTransaction)
-	dbRead(*myTransaction)
-	dbUpdate(*myTransaction)
-	dbDelete(*myTransaction)
+	fmt.Println(dbCreate(*myTransaction))
+	fmt.Println(dbRead(*myTransaction))
+	fmt.Println(dbUpdate(*myTransaction))
+	fmt.Println(dbDelete(*myTransaction))
 
 }
