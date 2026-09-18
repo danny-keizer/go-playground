@@ -78,7 +78,7 @@ func dbDelete(transaction DatabaseTransaction) string {
 // Then main entry point.
 func main() {
 
-	var databaseType string = "postgresql"
+	var databaseType string
 
 	fmt.Print("Select which database to modify (postgresql or mariadb): ")
 	fmt.Scan(&databaseType)
